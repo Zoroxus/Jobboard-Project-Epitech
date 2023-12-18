@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROJET WEB</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div class="d-flex flex-column overflow-hidden min-vh-100 vh-100">
+    <header>
+      <nav class="navbar navbar-expand-md bg-body-secondary h-100 border-bottom border-black">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img src="logo.png" height="24">
+            <span class="align-text-top">
+              Job Board - Admin Panel
+            </span>
+          </a>
+          <a class="btn btn-danger px-5" id="decoBtn" type="button" href="index.html" onclick='unSign();'>
+            Disconnect
+          </a> 
+        </div>
+      </nav>
+    </header>
+    <div role="main" class="flex-grow-1 overflow-auto">
+      <div class="container">
+        <div class="row mt-3">
+          <div id="alerts"></div>
+          <div class="d-flex align-items-center gap-2">
+            <label for="table">Table:</label>
+            <select name="table" id="table-select" class="form-select"></select>
+          </div>
+          <div id="table-container" class="table-responsive"></div>
+          <div class="container m-2">
+            <div class="gap-2 m-1 d-flex align-items-center">
+              <label for="id-input" class="form-label">ID:</label>
+              <input type="text" class="form-control" name="id-input" id="id-input">
+            </div>
+            <button class="btn btn-success" id="crud-add">Add</button>
+            <button class="btn btn-primary" id="crud-update">Update</button>
+            <button class="btn btn-danger" id="crud-delete">Delete</button>
+          </div>
+          <div id="formrow" class="container"></div>
+          <script type="module" src="admin.js"></script>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="flex-grow-0 flex-shrink-1">
+      <footer
+        class="bg-body-secondary flex-wrap justify-content-center align-items-center py-3 border-top border-black">
+        <p class="mb-0 px-2 text-body-secondary text-center">© POULEYN Maxime and BRISSET Florian</p>
+        <a href="/"
+          class="d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+          <img height="32" src="logo.png">
+        </a>
+      </footer>
+    </div>
+  </div>
+  <script type="module" src="js/main.js">
+  </script>
+</body>
+
+</html>

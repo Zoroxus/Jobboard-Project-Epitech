@@ -1,0 +1,50 @@
+version: "3.7"
+
+# volumes:
+#   mysql_data:
+
+
+networks:
+  web:
+
+
+services:
+  proxy:
+    container_name: proxy-web
+    build:
+      context: .
+      dockerfile: scripts/nginx
+    ports:
+      - 80:80
+    networks:
+      - web
+    depends_on:
+      - adminer
+      - api
+  api:
+    container_name: fastapi-app
+    build:
+      context: .
+      dockerfile: scripts/api
+    networks:
+      - web
+    depends_on:
+      - db
+  adminer:
+    container_name: adminer
+    image: adminer:latest
+    depends_on:
+      - db
+    networks:
+      - web
+  db:
+    container_name: MySQL
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: jobs
+    volumes:
+      - ./scripts/database.sql:/docker-entrypoint-initdb.d/init.sql
+      # - mysql_data:/var/lib/mysql
+    networks:
+      - web
